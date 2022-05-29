@@ -28,10 +28,12 @@ async function run(): Promise<void> {
         core.setFailed(
           "Couldn't create a hash from your branch name. Please try a different branch."
         )
+        return
       }
     }
     if (isUppercase) {
       core.setOutput('hashedBranchName', hashedBranchName.toUpperCase())
+      return
     }
     core.setOutput('hashedBranchName', hashedBranchName)
   } catch (error) {

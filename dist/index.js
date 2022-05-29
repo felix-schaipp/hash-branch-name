@@ -61,6 +61,7 @@ async function run() {
         const branchName = (0,_helper__WEBPACK_IMPORTED_MODULE_1__/* .validateBranchName */ .mz)(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch-name'));
         const desiredOutputLength = (0,_helper__WEBPACK_IMPORTED_MODULE_1__/* .validateOutputLength */ .V6)(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('output-length'));
         const encoding = (0,_helper__WEBPACK_IMPORTED_MODULE_1__/* .validateEncoding */ .EN)(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('encoding'));
+        const isUppercase = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('uppercase');
         let hashedBranchName = createHash('sha512')
             .update(branchName)
             .digest(encoding);
@@ -71,6 +72,9 @@ async function run() {
             else {
                 _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed("Couldn't create a hash from your branch name. Please try a different branch.");
             }
+        }
+        if (isUppercase) {
+            _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('hashedBranchName', hashedBranchName.toUpperCase());
         }
         _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('hashedBranchName', hashedBranchName);
     }
