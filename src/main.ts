@@ -1,16 +1,33 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+const {createHash} = await import('node:crypto')
+import {
+  validateBranchName,
+  validateEncoding,
+  validateOutputLength
+} from './helper'
 
-async function run(): Promise<void> {
+export function run(): void {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const branchName = validateBranchName(process.env.GITHUB_HEAD_REF)
+    const desiredOutputLength = validateOutputLength(
+      core.getInput('output-length')
+    )
+    const encoding = validateEncoding(core.getInput('encoding'))
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    let hashedBranchName = createHash('sha512')
+      .update(branchName as string)
+      .digest(encoding)
 
-    core.setOutput('time', new Date().toTimeString())
+    if (desiredOutputLength) {
+      if (typeof hashedBranchName === 'string' && hashedBranchName.length) {
+        hashedBranchName = hashedBranchName.slice(0, desiredOutputLength)
+      } else {
+        core.setFailed(
+          "Couldn't create a hash from your branch name. Please try a different branch."
+        )
+      }
+    }
+    core.setOutput('hashedBranchName', hashedBranchName)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

@@ -1,11 +1,15 @@
-name: 'Your name here'
+name: 'hash-branch-name'
 description: 'Provide a description here'
-author: 'Your name or organization here'
+author: '@feli-schaipp'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  output-length:
+    required: false
+    description: 'define a desired output length of your hashed branch name'
+    default: 'none'
+  encoding:
+    required: false
+    description: 'choose how the branch name should be encoded | base64 or hex. Hex is default'
+    default: 'hex'
 runs:
   using: 'node16'
   main: 'dist/index.js'

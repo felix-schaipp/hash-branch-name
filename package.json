@@ -1,8 +1,9 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
+  "name": "hash-branch-name",
+  "version": "1.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "type": "module",
+  "description": "A small github action to convert your branch name into a unique SHA. Use this for example if you plan to do per branch releases.",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -11,33 +12,37 @@
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
+    "test:watch": "jest --watch --no-cache",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
   },
   "keywords": [
     "actions",
     "node",
-    "setup"
+    "hash",
+    "branch",
+    "ci"
   ],
-  "author": "",
+  "author": "felix-schaipp",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.8.2"
   },
   "devDependencies": {
-    "@types/node": "^16.10.5",
-    "@typescript-eslint/parser": "^5.8.1",
-    "@vercel/ncc": "^0.31.1",
-    "eslint": "^7.32.0",
-    "eslint-plugin-github": "^4.3.2",
-    "eslint-plugin-jest": "^25.3.2",
-    "jest": "^27.2.5",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.36",
+    "@typescript-eslint/parser": "^5.26.0",
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.16.0",
+    "eslint-plugin-github": "^4.3.6",
+    "eslint-plugin-jest": "^26.4.2",
+    "jest": "^28.1.0",
     "js-yaml": "^4.1.0",
-    "prettier": "2.5.1",
-    "ts-jest": "^27.1.2",
-    "typescript": "^4.4.4"
+    "prettier": "^2.6.2",
+    "ts-jest": "^28.0.3",
+    "typescript": "^4.7.2"
+  },
+  "engines": {
+    "npm": "please use yarn",
+    "yarn": ">1.22.0"
   }
 }
