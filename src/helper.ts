@@ -1,8 +1,6 @@
 import * as core from '@actions/core'
 
-export const validateBranchName = (
-  branchName: typeof process.env.GITHUB_HEAD_REF
-): string => {
+export const validateBranchName = (branchName: string): string => {
   if (!branchName) {
     core.setFailed(
       "Can't obtain the branch from the environment. Please try again."

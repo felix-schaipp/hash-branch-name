@@ -12,5 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        id: test
         with:
-          branch-name: ${GITHUB_HEAD_REF}
+          branch-name: ${GITHUB_HEAD_REF} || ${GITHUB_REF} || ${GITHUB_REF_NAME}
+      - run: echo ${{ steps.test.outputs.hashedBranchName }}
+    steps:    
