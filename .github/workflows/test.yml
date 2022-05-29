@@ -33,4 +33,4 @@ jobs:
           branch-name: ${GITHUB_HEAD_REF}
           output-length: 12
           uppercase: true
-      - run: echo ${{ steps.test3.outputs.hashedBranchName }}
+      - run: echo ${{ steps.test4.outputs.hashedBranchName }}

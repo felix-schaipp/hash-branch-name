@@ -71,10 +71,12 @@ async function run() {
             }
             else {
                 _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed("Couldn't create a hash from your branch name. Please try a different branch.");
+                return;
             }
         }
         if (isUppercase) {
             _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('hashedBranchName', hashedBranchName.toUpperCase());
+            return;
         }
         _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('hashedBranchName', hashedBranchName);
     }
