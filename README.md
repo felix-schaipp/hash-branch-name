@@ -8,6 +8,10 @@ Slim action to hash the branch name of your pull request.
 
 ## Inputs
 
+### `branch-name`
+
+**Required** The branch name from the github environment variables. Default `"GITHUB_HEAD_REF"`.
+
 ### `output-length`
 
 **Optional** The desired ouput length of the generated hash. Must be at least 1. Default `"none"`.
@@ -27,6 +31,8 @@ Ouputs a hashed version of your branch name:
 
 ```
 uses: felix-schaipp/hash-branch-name@main
+with:
+  branch-name: GITHUB_HEAD_REF
 ```
 
 ```

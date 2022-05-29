@@ -1,15 +1,22 @@
 name: 'hash-branch-name'
-description: 'Provide a description here'
+description: 'Use this action to generate a hash of your branch name for further usage.'
 author: '@feli-schaipp'
 inputs:
+  branch-name:
+    required: true
+    description: 'Provide the branch name. Choose from these built-in variables: GITHUB_HEAD_REF, GITHUB_REF, GITHUB_REF_NAME'
+    default: ${GITHUB_HEAD_REF}
   output-length:
     required: false
-    description: 'define a desired output length of your hashed branch name'
+    description: 'Define a desired output length of your hashed branch name'
     default: 'none'
   encoding:
     required: false
-    description: 'choose how the branch name should be encoded | base64 or hex. Hex is default'
+    description: 'Choose how the branch name should be encoded | base64 or hex. Hex is default'
     default: 'hex'
 runs:
   using: 'node16'
   main: 'dist/index.js'
+branding:
+  icon: 'git-branch'
+  color: 'blue'
