@@ -13,6 +13,10 @@ inputs:
     required: false
     description: 'Choose how the branch name should be encoded | base64 or hex. Hex is default'
     default: 'hex'
+  uppercase:
+    required: false
+    description: 'Should the output be converted to uppercase?'
+    default: false
 runs:
   using: 'node16'
   main: 'dist/index.js'

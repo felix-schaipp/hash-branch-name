@@ -15,6 +15,7 @@ async function run(): Promise<void> {
       core.getInput('output-length')
     )
     const encoding = validateEncoding(core.getInput('encoding'))
+    const isUppercase = core.getInput('uppercase')
 
     let hashedBranchName = createHash('sha512')
       .update(branchName as string)
@@ -28,6 +29,9 @@ async function run(): Promise<void> {
           "Couldn't create a hash from your branch name. Please try a different branch."
         )
       }
+    }
+    if (isUppercase) {
+      core.setOutput('hashedBranchName', hashedBranchName.toUpperCase())
     }
     core.setOutput('hashedBranchName', hashedBranchName)
   } catch (error) {

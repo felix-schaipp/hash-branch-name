@@ -10,7 +10,7 @@ Slim action to hash the branch name of your pull request.
 
 ### `branch-name`
 
-**Required** The branch name from the github environment variables. Default `"GITHUB_HEAD_REF"`.
+**Required** The branch name from the github environment variables.
 
 ### `output-length`
 
@@ -19,6 +19,10 @@ Slim action to hash the branch name of your pull request.
 ### `encoding`
 
 **Optional** Desired encoding choose between `"base64"` and `"hex"`. Default `"hex"`.
+
+### `uppercase`
+
+**Optional** If the output should be uppercased. Default `false`.
 
 ## Outputs
 
@@ -32,7 +36,7 @@ Ouputs a hashed version of your branch name:
 ```
 uses: felix-schaipp/hash-branch-name@main
 with:
-  branch-name: GITHUB_HEAD_REF
+  branch-name: ${GITHUB_HEAD_REF}
 ```
 
 ```
@@ -45,4 +49,12 @@ with:
 uses: felix-schaipp/hash-branch-name@main
 with:
   encoding: 'base64'
+```
+
+uses: felix-schaipp/hash-branch-name@main
+with:
+uppercase: true
+
+```
+
 ```
