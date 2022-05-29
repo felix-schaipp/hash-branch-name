@@ -11,26 +11,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./
+      - name: Test case 1
+        uses: ./
         id: test
         with:
           branch-name: ${GITHUB_HEAD_REF}
       - run: echo ${{ steps.test.outputs.hashedBranchName }}
-      - uses: ./
+      - name: Test case 2
+        uses: ./
         id: test2
         with:
           branch-name: ${GITHUB_HEAD_REF}
           encoding: 'base64'
           output-length: 16
       - run: echo ${{ steps.test2.outputs.hashedBranchName }}
-      - uses: ./
+      - name: Test case 3
+        uses: ./
         id: test3
         with:
           branch-name: ${GITHUB_HEAD_REF}
           output-length: 12
           uppercase: false
       - run: echo ${{ steps.test3.outputs.hashedBranchName }}
-      - uses: ./
+      - name: Test case 4
+        uses: ./
         id: test4
         with:
           branch-name: ${GITHUB_HEAD_REF}
