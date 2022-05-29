@@ -14,5 +14,17 @@ jobs:
       - uses: ./
         id: test
         with:
-          branch-name: ${GITHUB_HEAD_REF} || ${GITHUB_REF} || ${GITHUB_REF_NAME}
+          branch-name: ${GITHUB_HEAD_REF}
       - run: echo ${{ steps.test.outputs.hashedBranchName }}
+      - uses: ./
+        id: test2
+        with:
+          branch-name: ${GITHUB_HEAD_REF}
+          encoding: 'base64'
+      - run: echo ${{ steps.test2.outputs.hashedBranchName }}
+      - uses: ./
+        id: test3
+        with:
+          branch-name: ${GITHUB_HEAD_REF}
+          output-length: 12
+      - run: echo ${{ steps.test3.outputs.hashedBranchName }}
