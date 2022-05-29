@@ -6,7 +6,7 @@ import {
   validateOutputLength
 } from './helper'
 
-export function run(): void {
+async function run(): Promise<void> {
   try {
     const branchName = validateBranchName(process.env.GITHUB_HEAD_REF)
     const desiredOutputLength = validateOutputLength(

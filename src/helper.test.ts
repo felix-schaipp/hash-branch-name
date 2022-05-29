@@ -1,4 +1,8 @@
-import {validateEncoding, validateBranchName} from './helper'
+import {
+  validateEncoding,
+  validateBranchName,
+  validateOutputLength
+} from './helper'
 
 let consoleSpy = jest.spyOn(process.stdout, 'write')
 
@@ -92,6 +96,29 @@ describe('helpers', () => {
             ],
           }
         `)
+    })
+  })
+  describe('validateOutputLength', () => {
+    test('throw output length is 0', () => {
+      const consoleSpy = jest.spyOn(process.stdout, 'write')
+      validateOutputLength('0')
+
+      expect(consoleSpy).toMatchInlineSnapshot(`
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "::error::The desired ouput length must be at least 1
+        ",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": true,
+            },
+          ],
+        }
+      `)
     })
   })
 })

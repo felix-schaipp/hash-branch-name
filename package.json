@@ -2,7 +2,6 @@
   "name": "hash-branch-name",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "description": "A small github action to convert your branch name into a unique SHA. Use this for example if you plan to do per branch releases.",
   "main": "lib/main.js",
   "scripts": {
@@ -11,7 +10,7 @@
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
-    "test": "jest",
+    "test": "jest --no-cache",
     "test:watch": "jest --watch --no-cache",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
