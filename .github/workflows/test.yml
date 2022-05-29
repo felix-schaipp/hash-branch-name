@@ -28,6 +28,7 @@ jobs:
         with:
           branch-name: ${GITHUB_HEAD_REF}
           output-length: 12
+          uppercase: false
       - uses: ./
         id: test4
         with:

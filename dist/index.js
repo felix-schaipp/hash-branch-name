@@ -57,11 +57,10 @@ const { createHash } = await Promise.resolve(/* import() */).then(__nccwpck_requ
 
 async function run() {
     try {
-        _actions_core__WEBPACK_IMPORTED_MODULE_0__.debug(process.env.GITHUB_HEAD_REF || 'No head ref available');
         const branchName = (0,_helper__WEBPACK_IMPORTED_MODULE_1__/* .validateBranchName */ .mz)(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch-name'));
         const desiredOutputLength = (0,_helper__WEBPACK_IMPORTED_MODULE_1__/* .validateOutputLength */ .V6)(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('output-length'));
         const encoding = (0,_helper__WEBPACK_IMPORTED_MODULE_1__/* .validateEncoding */ .EN)(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('encoding'));
-        const isUppercase = Boolean(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('uppercase'));
+        const isUppercase = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('uppercase') === 'false' ? false : true;
         let hashedBranchName = createHash('sha512')
             .update(branchName)
             .digest(encoding);
