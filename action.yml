@@ -5,7 +5,6 @@ inputs:
   branch-name:
     required: true
     description: 'Provide the branch name. Choose from these built-in variables: GITHUB_HEAD_REF, GITHUB_REF, GITHUB_REF_NAME'
-    default: ${GITHUB_HEAD_REF}
   output-length:
     required: false
     description: 'Define a desired output length of your hashed branch name'
