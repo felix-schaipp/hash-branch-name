@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 
-export const validateBranchName = (branchName: string): string => {
+export const validateBranchName = (branchName: string | undefined): string => {
   if (!branchName) {
     core.setFailed(
       "Can't obtain the branch from the environment. Please try again."
