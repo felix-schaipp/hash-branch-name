@@ -15,7 +15,7 @@ async function run(): Promise<void> {
       core.getInput('output-length')
     )
     const encoding = validateEncoding(core.getInput('encoding'))
-    const isUppercase = core.getInput('uppercase')
+    const isUppercase = Boolean(core.getInput('uppercase'))
 
     let hashedBranchName = createHash('sha512')
       .update(branchName as string)
