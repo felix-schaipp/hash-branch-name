@@ -29,6 +29,7 @@ jobs:
           branch-name: ${GITHUB_HEAD_REF}
           output-length: 12
           uppercase: false
+      - run: echo ${{ steps.test3.outputs.hashedBranchName }}
       - uses: ./
         id: test4
         with:
