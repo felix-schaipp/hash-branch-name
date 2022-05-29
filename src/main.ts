@@ -8,6 +8,10 @@ import {
 
 async function run(): Promise<void> {
   try {
+    core.debug(process.env.GITHUB_HEAD_REF || 'No head ref available')
+    core.debug(process.env.GITHUB_REF || 'No ref available')
+    core.debug(process.env.GITHUB_REF_NAME || 'no ref name available')
+
     const branchName = validateBranchName(process.env.GITHUB_HEAD_REF)
     const desiredOutputLength = validateOutputLength(
       core.getInput('output-length')
